@@ -1,0 +1,29 @@
+<!-- <div class="form-group"> -->
+<label *ngIf="!isCheckBox() && !isRadio() && bootstrapInput.label" for="inputPassword6">{{ bootstrapInput.label }}</label>
+
+<input *ngIf="isInput()" [type]="bootstrapInput.type" [placeholder]="bootstrapInput.placeHolder" [maxLength]="bootstrapInput.maxLength" [ngClass]="{ 'form-control': bootstrapInput.isFormControl }" [id]="bootstrapInput.id" [disabled]="bootstrapInput.isReadOnly"
+    [required]="bootstrapInput.isRequired" />
+
+<input *ngIf="isInputFile()" [type]="bootstrapInput.type" [placeholder]="bootstrapInput.placeHolder" [ngClass]="{ 'form-control-file': bootstrapInput.isFormControl }" [id]="bootstrapInput.id" [disabled]="bootstrapInput.isReadOnly" [required]="bootstrapInput.isRequired"
+/>
+
+<textarea *ngIf="isTextArea()" [ngClass]="{ 'form-control': bootstrapInput.isFormControl }" [maxLength]="bootstrapInput.maxLength" [id]="bootstrapInput.id" [rows]="bootstrapInput.rows" [placeholder]="bootstrapInput.placeHolder" [disabled]="bootstrapInput.isReadOnly"
+    [required]="bootstrapInput.isRequired"></textarea>
+
+<select *ngIf="isSelect()" [ngClass]="{ 'form-control': bootstrapInput.isFormControl }" [id]="bootstrapInput.id" [required]="bootstrapInput.isRequired">
+    <option value="">Todos</option>
+    <option *ngFor="let option of bootstrapInput.options" [value]="option.value">{{ option.displayName }}</option>
+</select>
+
+<div *ngIf="isCheckBox() || isRadio()" class="form-check">
+    <input [type]="bootstrapInput.type" [placeholder]="bootstrapInput.placeHolder" [ngClass]="{ 'form-check-input': bootstrapInput.isFormControl }" [id]="bootstrapInput.id" [value]="bootstrapInput.value" [disabled]="bootstrapInput.isReadOnly" [checked]="bootstrapInput.isChecked"
+        [required]="bootstrapInput.isRequired" />
+    <label *ngIf="bootstrapInput.label" class="form-check-label" [for]="bootstrapInput.id">
+        {{ bootstrapInput.label }}
+    </label>
+</div>
+
+<small *ngIf="bootstrapInput.hint" [id]="bootstrapInput.id" class="form-text text-muted">
+    {{ bootstrapInput.hint }}
+</small>
+<!-- </div> -->
