@@ -16,6 +16,7 @@ export interface BootstrapInputModel {
     maxLength?: number;
     isRequired?: boolean;
     formControl?: string;
+    error?: string;
 }
 
 export interface SelectOptions {

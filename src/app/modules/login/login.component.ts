@@ -42,5 +42,6 @@ export class LoginComponent implements OnInit {
 
     public login() {
         console.log('this.loginForm :>> ', this.loginForm);
+        // this.inputs[1] = { ...this.inputs[1], error: 'test' }; //If want to refresh html
     }
 }

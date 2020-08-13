@@ -20,5 +20,6 @@ export class BootstrapInputComponent implements OnInit {
 
     ngOnInit() {
         this.bootstrapInput.maxLength = this.bootstrapInput.maxLength ? this.bootstrapInput.maxLength : 10000;
+        console.log('tst');
     }
 }

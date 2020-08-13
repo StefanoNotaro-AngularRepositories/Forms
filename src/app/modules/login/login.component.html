@@ -1,6 +1,8 @@
 <div class="login center shadow p-3 mb-5 bg-white rounded">
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <app-bootstrap-input *ngFor="let input of inputs" [formControlName]="input.formControl" [bootstrapInput]="input" ngDefaultControl></app-bootstrap-input>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="needs-validation" novalidate>
+        <div class="form-group">
+            <app-bootstrap-input *ngFor="let input of inputs" [formControlName]="input.formControl" [bootstrapInput]="input" ngDefaultControl></app-bootstrap-input>
+        </div>
         <hr />
         <button class="btn btn-outline-primary btn-lg btn-block">Login</button>
     </form>
