@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BootstrapInputModel } from '../bootstrap-inputs/models/bootstrap-input.model';
-import { BootstrapInputTypes, Type } from '../bootstrap-inputs/models/bootstrap-input-types.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BootstrapInputModel } from '../../shared/bootstrap-input/models/bootstrap-input.model';
+import { BootstrapInputTypes, Type } from '../../shared/bootstrap-input/models/bootstrap-input-types.model';
 
 @Component({
     selector: 'app-login',
@@ -41,7 +41,17 @@ export class LoginComponent implements OnInit {
     ngOnInit() {}
 
     public login() {
-        console.log('this.loginForm :>> ', this.loginForm);
-        // this.inputs[1] = { ...this.inputs[1], error: 'test' }; //If want to refresh html
+        this.validateForm();
+    }
+
+    private validateForm() {
+        for (let i = 0; i < this.inputs.length; i++) {
+            const value = this.loginForm.controls[this.inputs[i].formControl].value ? this.loginForm.controls[this.inputs[i].formControl].value : '';
+            if (this.loginForm.controls[this.inputs[i].formControl].errors !== null) {
+                this.inputs[i] = { ...this.inputs[i], error: 'Este campo es requerido.', value };
+            } else {
+                this.inputs[i] = { ...this.inputs[i], error: undefined, value };
+            }
+        }
     }
 }

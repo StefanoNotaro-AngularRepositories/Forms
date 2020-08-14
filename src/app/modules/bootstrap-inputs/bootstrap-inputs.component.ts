@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BootstrapInputModel } from './models/bootstrap-input.model';
-import { BootstrapInputTypes, Type } from './models/bootstrap-input-types.model';
+import { BootstrapInputTypes, Type } from '../../shared/bootstrap-input/models/bootstrap-input-types.model';
+import { BootstrapInputModel } from '../../shared/bootstrap-input/models/bootstrap-input.model';
 
 @Component({
     selector: 'app-bootstrap-inputs',

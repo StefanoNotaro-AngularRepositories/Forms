@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BootstrapInputModel } from '../../models/bootstrap-input.model';
-import { BootstrapInputTypes } from '../../models/bootstrap-input-types.model';
+import { BootstrapInputModel } from '../models/bootstrap-input.model';
+import { BootstrapInputTypes } from '../models/bootstrap-input-types.model';
 
 @Component({
     selector: 'app-bootstrap-input',
@@ -20,6 +20,5 @@ export class BootstrapInputComponent implements OnInit {
 
     ngOnInit() {
         this.bootstrapInput.maxLength = this.bootstrapInput.maxLength ? this.bootstrapInput.maxLength : 10000;
-        console.log('tst');
     }
 }
