@@ -6,16 +6,30 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li [class]="menu.class" routerLinkActive="active" *ngFor="let menu of menues">
-                <a *ngIf="!menu.idDropDownList" class="nav-link" [routerLink]="menu.path">{{ menu.displayName }}</a>
-
-                <a *ngIf="menu.idDropDownList" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ menu.displayName }}
-                </a>
-                <div *ngIf="menu.idDropDownList" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a *ngFor="let subMenu of menu.subMenues" [class]="subMenu.class" [routerLink]="subMenu.path">{{ subMenu.displayName }}</a>
+            <li class="nav-item" routerLinkActive="active" *ngFor="let menu of menues" [ngClass]="{ dropdown: menu.subMenues }">
+                <a *ngIf="!menu.subMenues" class="nav-link" [routerLink]="menu.path" (click)="setBreadCrumb(menu)">{{ menu.displayName }}</a>
+                <div *ngIf="menu.subMenues">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ menu.displayName }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div *ngFor="let subMenu of menu.subMenues">
+                            <a class="dropdown-item" [routerLink]="subMenu.path" (click)="setBreadCrumb(subMenu)">{{ subMenu.displayName }} </a>
+                            <div *ngIf="subMenu.hasDivider" class="dropdown-divider"></div>
+                        </div>
+                    </div>
                 </div>
             </li>
         </ul>
     </div>
+</nav>
+<nav aria-label="breadcrumb" *ngIf="breadCrumbPath.length > 0">
+    <ol class="breadcrumb">
+        <ng-container *ngFor="let path of breadCrumbPath; let i = index">
+            <li class="breadcrumb-item" *ngIf="i !== breadCrumbPath.length - 1">
+                <a [routerLink]="path.path">{{ path.displayName }}</a>
+            </li>
+            <li *ngIf="i === breadCrumbPath.length - 1" class="breadcrumb-item active" aria-current="page">{{ breadCrumbPath[breadCrumbPath.length - 1].displayName }}</li>
+        </ng-container>
+    </ol>
 </nav>
