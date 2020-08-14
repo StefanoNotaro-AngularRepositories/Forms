@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from './models/menu-item.model';
 
 @Component({
     selector: 'app-navbar',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-    public menues = [
-        { path: 'Home', displayName: 'Home' },
-        { path: 'BootstrapInputsExamples', displayName: 'Bootstrap Inputs Examples' },
-        { path: 'Login', displayName: 'Login Example' },
+    public menues: MenuItem[] = [
+        { path: 'Home', displayName: 'Home', class: 'nav-item' },
+        { path: 'BootstrapInputsExamples', displayName: 'Bootstrap Inputs Examples', class: 'nav-item' },
+        {
+            path: '',
+            displayName: 'Bootstrap Examples',
+            class: 'nav-item dropdown',
+            idDropDownList: true,
+            subMenues: [{ path: 'Login', displayName: 'Login', class: 'dropdown-item' }],
+        },
     ];
 
     constructor() {}
