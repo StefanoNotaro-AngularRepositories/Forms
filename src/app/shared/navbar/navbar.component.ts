@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
                     displayName: 'Login',
                     breadCrumPath: 'Bootstrap Examples/Login',
                 },
-                { path: '', displayName: 'Register', breadCrumPath: 'Bootstrap Examples/Register' },
+                { path: 'Register', displayName: 'Register', breadCrumPath: 'Bootstrap Examples/Register' },
             ],
         },
     ];
